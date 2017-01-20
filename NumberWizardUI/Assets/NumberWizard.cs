@@ -26,15 +26,18 @@ public class NumberWizard : MonoBehaviour {
 	}
 
 	void StartGame(){
-		max = 1001;
+		max = 1000;
 		min = 1;
-		guess = 500;
+		NextGuess ();
 }
 	void NextGuess(){
-		guess = (min + max) / 2;
+
 		maxGuesses -= 1;
-		guessText.text = guess.ToString ();
 		if (maxGuesses <= 0)
 			Application.LoadLevel ("Win");
+		else {
+			guess = Random.Range (min, max + 1);
+			guessText.text = guess.ToString ();
+		}
 	}
 }
